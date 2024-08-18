@@ -1,0 +1,43 @@
+import random
+
+def permainan_tebak_angka():
+    print("Selamat datang di permainan tebak angka!")
+    print("Saya telah memilih sebuah angka antara 1 dan 100.")
+    print("Cobalah untuk menebaknya dalam 10 percobaan.\n")
+
+    # Menghasilkan angka acak antara 1 dan 100
+    angka_rahasia = random.randint(1, 100)
+
+    # Memberikan pemain 10 kesempatan untuk menebak
+    for percobaan in range(1, 11):
+        try:
+            tebakan = int(input(f"Percobaan {percobaan}: Masukkan tebakan Anda: "))
+        except ValueError:
+            print("Input tidak valid. Silakan masukkan angka antara 1 dan 100.")
+            continue
+
+        if tebakan < 1 or tebakan > 100:
+            print("Tebakan di luar jangkauan! Harus antara 1 dan 100.")
+        elif tebakan < angka_rahasia:
+            print("Tebakan Anda terlalu rendah.")
+        elif tebakan > angka_rahasia:
+            print("Tebakan Anda terlalu tinggi.")
+        else:
+            print(f"Selamat! Anda menebak dengan benar dalam {percobaan} percobaan!")
+            break
+    else:
+        print(f"Maaf, Anda telah menggunakan semua 10 percobaan. Angka yang benar adalah {angka_rahasia}.")
+
+def main():
+    while True:
+        permainan_tebak_angka()
+        
+        # Tanyakan kepada pemain apakah ingin bermain lagi
+        lagi = input("Apakah Anda ingin bermain lagi? (ya/tidak): ").strip().lower()
+        if lagi != 'ya':
+            print("Terima kasih telah bermain! Sampai jumpa!")
+            break
+
+# Memulai permainan
+if __arya__ == "__main__":
+    main()
